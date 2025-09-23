@@ -1,13 +1,12 @@
-
 async function fetchPokemon(id) {
-  const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const data = await promise.json();
 
   return {
     id: data.id,
     name: data.name,
-    image: data.sprites.other['official-artwork'].front_default,
-  }
+    image: data.sprites.front_default, //image: data.sprites.other['official-artwork'].front_default
+  };
 }
 
 export default async function fetchPokemons(count) {
