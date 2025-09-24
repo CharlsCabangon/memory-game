@@ -5,7 +5,8 @@ async function fetchPokemon(id) {
   return {
     id: data.id,
     name: data.name,
-    image: data.sprites.front_default, //image: data.sprites.other['official-artwork'].front_default
+    // image: data.sprites.front_default,
+    image: data.sprites.other['official-artwork'].front_default,
   };
 }
 
