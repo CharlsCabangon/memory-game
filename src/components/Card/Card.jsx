@@ -1,4 +1,14 @@
+import './Card.css';
+import { capitalizeWords } from '@/utils/stringUtils';
+
 export default function Card({ card, onClick }) {
+
+  function uppercase(str) {
+    str.indexAt
+
+    return 
+  }
+
   return (
     <div
       className="poke-card__container"
@@ -6,8 +16,8 @@ export default function Card({ card, onClick }) {
       tabIndex={0}
       aria-disabled={card.isClicked}
     >
-      <img src={card.image} alt={card.name} className="poke-card__name" />
-      <h2 className="poke-card__name">{card.name}</h2>
+      <img src={card.image} alt={card.name} className="poke-card__sprite" />
+      <h2 className="poke-card__name">{capitalizeWords(card.name)}</h2>
     </div>
   );
 }

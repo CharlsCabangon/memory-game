@@ -1,0 +1,11 @@
+.gameboard__container {
+  width: 80vw;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  justify-content: center; 
+  gap: 2rem;               
+  
+  padding: 1rem;
+  box-sizing: border-box;
+}

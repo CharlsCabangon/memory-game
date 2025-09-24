@@ -1,0 +1,21 @@
+
+.poke-card__container {
+  padding: 2rem 1rem;
+
+  background: linear-gradient(rgba(148, 173, 199, 0.5), rgba(117, 153, 198, 0.5));
+  border-radius: 0.5rem;
+  border: solid rgb(201, 238, 255) 1px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poke-card__sprite {
+  width: 130px;
+}
+
+.poke-card__name {
+  font-size: var(--font-base);
+  color: white;
+}

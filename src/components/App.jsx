@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 import Header from '@/components/Header/Header';
 import Gameboard from '@/components/Gameboard/Gameboard';
-import GameOverModal from './Modals/GameOverModal';
 import WinModal from './Modals/WinModal';
+import GameOverModal from './Modals/GameOverModal';
 
 import fetchPokemons from '@/services/pokeService';
 import { shuffle } from '@/utils/shuffle';
@@ -20,14 +20,7 @@ export default function App() {
   const [highScore, setHighScoreState] = useState(() => getHighScore());
   const [gameStatus, setGameStatus] = useState('idle');
 
-  function getNextLevel(currentLevel) {
-    const levelsOrder = ['EASY', 'MEDIUM', 'HARD'];
-    const idx = levelsOrder.indexOf(currentLevel);
-    if (idx < levelsOrder.length - 1) {
-      return levelsOrder[idx + 1];
-    }
-    return currentLevel;
-  }
+  const levelScore = cards.filter((c) => c.isClicked).length;
 
   useEffect(() => {
     async function loadPokemons() {
@@ -35,7 +28,6 @@ export default function App() {
       const pokemons = await fetchPokemons(count);
 
       setCards(pokemons.map((p) => ({ ...p, isClicked: false })));
-      setScore(0);
       setGameStatus('playing');
     }
 
@@ -59,23 +51,30 @@ export default function App() {
 
     const newScore = score + 1;
     setScore(newScore);
+
     if (newScore > highScore) {
       setHighScoreState(newScore);
       setHighScore(newScore);
     }
+
     if (updatedCards.every((c) => c.isClicked)) {
       setGameStatus('win');
     }
   }
 
-  function resetGame(nextLevel = level) {
+  function resetGame(nextLevel = 'EASY', keepScore = false) {
     setLevel(nextLevel);
-    setScore(0);
+    if (!keepScore) setScore(0);
     setGameStatus('idle');
   }
 
   function handleRestart() {
-    resetGame();
+    resetGame('EASY');
+  }
+
+  function handleKeepPlaying() {
+    const nextLevel = getNextLevel(level);
+    resetGame(nextLevel, true);
   }
 
   function handleLevelChange(newLevel) {
@@ -83,30 +82,35 @@ export default function App() {
     setGameStatus('idle');
   }
 
-  useEffect(() => {
-    if (gameStatus === 'win') {
-      const nextLevel = getNextLevel(level);
-      if (nextLevel !== level) {
-        setTimeout(() => {
-          setLevel(nextLevel);
-          setGameStatus('progress'); // triggers useEffect to load next level
-        }, 1500); // Optional: short delay before next level
-      }
+  function getNextLevel(currentLevel) {
+    const levelsOrder = ['EASY', 'MEDIUM', 'HARD'];
+    const index = levelsOrder.indexOf(currentLevel);
+    if (index < levelsOrder.length - 1) {
+      return levelsOrder[index + 1];
     }
-  }, [level, gameStatus]);
+    return currentLevel;
+  }
 
   return (
     <>
       <Header
         score={score}
         highScore={highScore}
-        onReset={resetGame}
+        levelScore={levelScore}
         level={level}
         onLevelChange={handleLevelChange}
       />
-      <Gameboard cards={cards} onCardClick={handleCardClick} />
-      {gameStatus === 'gameover' && <GameOverModal onRestart={handleRestart} />}
-      {gameStatus === 'win' && <WinModal onRestart={handleRestart} />}
+      <main>
+        <Gameboard cards={cards} onCardClick={handleCardClick} />
+        {gameStatus === 'gameover' && <GameOverModal onRestart={handleRestart} />}
+        {gameStatus === 'win' && (
+          <WinModal
+            onKeepPlaying={handleKeepPlaying}
+            onRestart={handleRestart}
+            level={level}
+          />
+        )}
+      </main>
     </>
   );
 }
