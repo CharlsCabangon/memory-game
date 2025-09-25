@@ -1,4 +1,4 @@
-export default function WinModal({ onKeepPlaying, onRestart, level }) {
+export default function WinModal({ onKeepPlaying, onQuit, level }) {
   return (
     <dialog open>
       <h1>You Won!</h1>
@@ -9,7 +9,7 @@ export default function WinModal({ onKeepPlaying, onRestart, level }) {
       </p>
       <div>
         <button onClick={onKeepPlaying}>Keep Playing</button>
-        <button onClick={onRestart}>Restart (Easy)</button>
+        <button onClick={onQuit}>Quit</button>
       </div>
     </dialog>
   );

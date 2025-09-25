@@ -1,6 +1,6 @@
 import Card from '../Card/Card';
 
-import './Gameboard.css'
+import './Gameboard.css';
 
 export default function Gameboard({ cards, onCardClick }) {
   return (

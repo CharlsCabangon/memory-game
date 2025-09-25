@@ -2,13 +2,6 @@ import './Card.css';
 import { capitalizeWords } from '@/utils/stringUtils';
 
 export default function Card({ card, onClick }) {
-
-  function uppercase(str) {
-    str.indexAt
-
-    return 
-  }
-
   return (
     <div
       className="poke-card__container"

@@ -1,8 +1,8 @@
-export default function GameOverModal({ onRestart }) {
+export default function GameOverModal({ onQuit }) {
   return (
     <dialog open>
       <h1>Game Over</h1>
-      <button onClick={onRestart}>Restart</button>
+      <button onClick={onQuit}>Quit</button>
     </dialog>
   );
 }
