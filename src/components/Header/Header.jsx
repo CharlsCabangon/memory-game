@@ -9,11 +9,9 @@ export default function Header({ score, highScore, levelScore, level }) {
   return (
     <header>
       <img src={pokemonLogo} alt="Pokémon logo" className="header__logo" />
-      <div className="header__score-wrapper">
-        <div className="header__score">Score: {score}</div>
-        <div className="header__highscore">High Score: {highScore}</div>
-      </div>
-      <div className="header__progress-wrapper">
+      <div className="header__score">Score: {score}</div>
+      <div className="header__highscore">High Score: {highScore}</div>
+      <div className="header__progress">
         {levelScore} / {levelCount}
       </div>
     </header>

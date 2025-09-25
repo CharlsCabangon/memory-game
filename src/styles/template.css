@@ -4,7 +4,6 @@
 /* Roboto*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Varela+Round&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -14,17 +13,20 @@
   --color-secondary: ;
   --color-accent: ;
 
-  --color-gradient: ;
+  --color-gradient-bg: linear-gradient(rgba(20, 71, 129, 0.5), rgba(41, 56, 8, 0.8));
+  --color-gradient-components: linear-gradient(rgba(148, 173, 199, 0.1), rgba(117, 153, 198, 0.2));
 
   --color-bg-base: ;
   --color-bg-layer: ;
   --color-bg-muted: ;
-  --color-bg-base-hover: ;
+  --color-bg-accent: #9bb4bf;
+  --color-bg-base-hover: rgba(148, 173, 199, 0.3);
   --color-bg-layer-hover: ;
   --color-bg-muted-hover: ;
 
-  --color-text-base: ;
-  --color-text-muted: ;
+  --color-text-base: #ffffff;
+  --color-text-muted: #dedede;
+  --color-text-dark: #003349;
 
   /* font styles */
   --font-brand: ;
@@ -62,7 +64,7 @@
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 4px 10px rgba(0, 27, 48, 0.55);
 }
 
 * {

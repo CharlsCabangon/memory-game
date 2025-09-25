@@ -1,8 +1,16 @@
+import { PrimaryBtn } from '../Buttons/Buttons';
+
+import './Modals.css';
+
 export default function GameOverModal({ onQuit }) {
   return (
-    <dialog open>
-      <h1>Game Over</h1>
-      <button onClick={onQuit}>Quit</button>
-    </dialog>
+    <div className="dialog__backdrop">
+      <dialog open className="dialog dialog-gameover">
+        <h1>Game Over</h1>
+        <div className="dialog__btn-wrapper">
+          <PrimaryBtn name="Quit" onClick={onQuit} />
+        </div>
+      </dialog>
+    </div>
   );
 }

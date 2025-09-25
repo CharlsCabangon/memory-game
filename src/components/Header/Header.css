@@ -4,8 +4,9 @@ header {
   padding: 2rem;
 
   font-family: var(--font-body);
-  font-weight: 600;
-  color: white;
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: rgb(255, 207, 32);
 
   display: flex;
   flex-direction: column;
@@ -20,14 +21,13 @@ header {
   margin-bottom: 0.5rem;
 }
 
-.header__score-wrapper,
-.header__level-wrapper {
-  display: flex;
-  gap: 1rem;
-}
-
-.header__level-wrapper {
+.header__highscore {
 
   position: absolute;
   right: 50px;
+}
+
+.header__progress {
+  color: var(--color-text-base);
+  font-size: var(--font-md);
 }
