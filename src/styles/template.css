@@ -4,7 +4,6 @@
 /* Roboto*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
@@ -13,8 +12,14 @@
   --color-secondary: ;
   --color-accent: ;
 
-  --color-gradient-bg: linear-gradient(rgba(20, 71, 129, 0.5), rgba(41, 56, 8, 0.8));
-  --color-gradient-components: linear-gradient(rgba(148, 173, 199, 0.1), rgba(117, 153, 198, 0.2));
+  --color-gradient-bg: linear-gradient(
+    rgba(20, 71, 129, 0.5),
+    rgba(41, 56, 8, 0.8)
+  );
+  --color-gradient-components: linear-gradient(
+    rgba(148, 173, 199, 0.1),
+    rgba(117, 153, 198, 0.2)
+  );
 
   --color-bg-base: ;
   --color-bg-layer: ;
@@ -30,7 +35,7 @@
 
   /* font styles */
   --font-brand: ;
-  --font-body: "Nunito";
+  --font-body: 'Nunito';
   --font-ui: ;
 
   /* font sizes */

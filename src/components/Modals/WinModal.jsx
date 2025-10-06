@@ -14,7 +14,7 @@ export default function WinModal({ onKeepPlaying, onQuit, level }) {
         </p>
         <div className="dialog__btn-wrapper">
           <SecondaryBtn name="Quit" onClick={onQuit} />
-          <PrimaryBtn name="Continue" onClick={onKeepPlaying}/>
+          <PrimaryBtn name="Continue" onClick={onKeepPlaying} />
         </div>
       </dialog>
     </div>

@@ -2,15 +2,15 @@
   width: 100%;
   height: 100%;
 
-  position: fixed;  
+  position: fixed;
   top: 0;
   left: 0;
 
   background: rgba(0, 0, 0, 0.5);
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;  
+  z-index: 999;
 }
 
 dialog {
@@ -50,6 +50,6 @@ dialog {
   gap: 1rem;
 }
 
-.dialog-level-select input[type="radio"] {
+.dialog-level-select input[type='radio'] {
   accent-color: var(--color-bg-accent);
 }
