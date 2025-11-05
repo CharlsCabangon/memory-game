@@ -11,9 +11,6 @@ import { shuffle } from '@/utils/shuffle';
 import { LEVELS } from '@/utils/levels';
 import { getHighScore, setHighScore } from '@/utils/storage';
 
-import '@/styles/index.css';
-import '@/styles/App.css';
-
 export default function App() {
   const [level, setLevel] = useState(null);
   const [showLevelSelect, setShowLevelSelect] = useState(true);

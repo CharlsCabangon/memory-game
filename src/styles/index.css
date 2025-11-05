@@ -1,4 +1,8 @@
-@import url('./template.css');
+@import 'tailwindcss';
+
+body {
+  
+}
 
 body {
   min-height: 100vh;
