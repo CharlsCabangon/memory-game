@@ -1,4 +1,4 @@
-export function capitalizeWords(str) {
+export function capitalizeText(str) {
   if (!str) return '';
   return str
     .split(' ')
