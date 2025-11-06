@@ -1,10 +1,8 @@
 import Card from '../Card/Card';
 
-import './Gameboard.css';
-
 export default function Gameboard({ cards, onCardClick }) {
   return (
-    <div className="gameboard__container">
+    <div className="w-[80vw] grid [grid-template-columns:repeat(auto-fit,_150px)] justify-center gap-8 p-4">
       {cards.map((card) => (
         <Card key={card.id} card={card} onClick={onCardClick} />
       ))}

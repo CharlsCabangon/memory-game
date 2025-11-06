@@ -107,7 +107,7 @@ export default function App() {
         levelScore={levelScore}
         level={level}
       />
-      <main>
+      <main className="w-full flex justify-center mt-20">
         {showLevelSelect && <LevelSelectModal onSelect={handleLevelSelect} />}
         {!showLevelSelect && (
           <>
