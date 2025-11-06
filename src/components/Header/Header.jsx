@@ -1,4 +1,4 @@
-import { LEVELS } from '@/utils/levels';
+import { LEVELS } from '@/lib/levels';
 import pokemonLogo from '@/assets/icons/pokemon-logo.svg';
 
 export default function Header({ score, highScore, levelScore, level }) {

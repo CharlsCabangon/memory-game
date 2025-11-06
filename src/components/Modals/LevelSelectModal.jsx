@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { PrimaryBtn } from '../Buttons/Buttons';
-import { LEVELS } from '@/utils/levels';
+import { LEVELS } from '@/lib/levels';
 
 export default function LevelSelectModal({ onSelect }) {
   return (
