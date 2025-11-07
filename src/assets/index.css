@@ -16,5 +16,5 @@ body {
   @apply min-h-screen w-full bg-center bg-cover bg-no-repeat overflow-x-hidden;
   background-image:
     linear-gradient(rgba(20, 71, 129, 0.5), rgba(41, 56, 8, 0.8)),
-    url('../assets/images/background.jpg');
+    url('../assets/images/background.avif');
 }

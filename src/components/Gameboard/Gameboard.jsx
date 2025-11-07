@@ -1,11 +1,23 @@
+import { motion } from 'framer-motion';
 import Card from '../Card/Card';
 
-export default function Gameboard({ cards, onCardClick }) {
+export default function Gameboard({ cards, onCardClick, isFlipping }) {
   return (
-    <div className="w-[80vw] grid [grid-template-columns:repeat(auto-fit,_150px)] justify-center gap-8 p-4">
+    <motion.div
+      layout
+      className="w-[80vw] flex flex-wrap justify-center gap-8 p-4"
+    >
       {cards.map((card) => (
-        <Card key={card.id} card={card} onClick={onCardClick} />
+        <motion.div
+          key={card.id}
+          layout // each card animates to new position
+          transition={{
+            layout: { duration: 0.3, ease: 'easeInOut' },
+          }}
+        >
+          <Card card={card} onClick={onCardClick} isFlipping={isFlipping} />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

@@ -28,6 +28,7 @@ export default function App() {
     cards,
     score,
     gameStatus,
+    isFlipping,
     levelScore,
     initializeCards,
     handleCardClick,
@@ -94,7 +95,11 @@ export default function App() {
         {showLevelSelect && <LevelSelectModal onSelect={handleLevelSelect} />}
         {!showLevelSelect && (
           <>
-            <Gameboard cards={cards} onCardClick={handleCardClick} />
+            <Gameboard
+              cards={cards}
+              onCardClick={handleCardClick}
+              isFlipping={isFlipping}
+            />
             {gameStatus === 'gameover' && (
               <GameOverModal onRestart={handleRestart} onQuit={handleQuit} />
             )}
