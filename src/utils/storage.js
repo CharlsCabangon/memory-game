@@ -1,10 +1,26 @@
-const HIGH_SCORE_KEY = 'memoryGameHighScore';
+import { STORAGE_KEYS } from '@/lib/keys';
 
-export function getHighScore() {
-  const saved = localStorage.getItem(HIGH_SCORE_KEY);
-  return saved ? Number(saved) : 0;
-}
+export const storage = {
+  get(key, defaultValue) {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  },
 
-export function setHighScore(score) {
-  localStorage.setItem(HIGH_SCORE_KEY, score);
-}
+  set(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {}
+  },
+
+  remove(key) {
+    localStorage.removeItem(key);
+  },
+
+  clear() {
+    Object.values(STORAGE_KEYS).forEach((k) => localStorage.removeItem(k));
+  },
+};

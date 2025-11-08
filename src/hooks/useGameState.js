@@ -1,10 +1,17 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
+
 import { shuffle } from '@/utils/shuffle';
+import { FLIP_TIME } from '@/lib/constants';
+
+import { useSoundEffects } from './sound/useSoundEffects';
 
 export function useGameState() {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [gameStatus, setGameStatus] = useState('idle');
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  const { playCardClick, playBump } = useSoundEffects();
 
   const levelScore = useMemo(
     () => cards.filter((c) => c.isClicked).length,
@@ -19,45 +26,41 @@ export function useGameState() {
 
   const handleCardClick = useCallback(
     (card) => {
-      if (gameStatus !== 'playing') return;
+      if (gameStatus !== 'playing' || isFlipping) return;
 
-      const cardId = typeof card === 'object' && card !== null ? card.id : card;
+      if (card.isClicked) {
+        playBump();
+        setGameStatus('gameover');
+        return;
+      }
 
-      setCards((prevCards) => {
-        const target = prevCards.find((c) => c.id === cardId);
-        if (!target) {
-          return prevCards;
-        }
+      playCardClick();
 
-        if (target.isClicked) {
-          setGameStatus('gameover');
-          return prevCards;
-        }
+      setIsFlipping(true);
 
-        const updated = prevCards.map((c) =>
-          c.id === cardId ? { ...c, isClicked: true } : c
-        );
+      setCards((prevCards) =>
+        prevCards.map((c) => (c.id === card.id ? { ...c, isClicked: true } : c))
+      );
 
-        setScore((s) => s + 1);
+      setScore((s) => s + 1);
 
-        return shuffle(updated);
-      });
+      setTimeout(() => {
+        setCards((prevCards) => {
+          const shuffled = shuffle([...prevCards]);
+          if (shuffled.every((c) => c.isClicked)) {
+            setGameStatus('win');
+          }
+          return shuffled;
+        });
+        setIsFlipping(false);
+      }, FLIP_TIME / 2); // half the flip time so cards shuffle while flipped
     },
-    [gameStatus]
+    [cards, gameStatus, isFlipping]
   );
-
-  useEffect(() => {
-    if (
-      gameStatus === 'playing' &&
-      cards.length > 0 &&
-      cards.every((c) => c.isClicked)
-    ) {
-      setGameStatus('win');
-    }
-  }, [cards, gameStatus]);
 
   const resetGame = useCallback((keepScore = false) => {
     setCards([]);
+    setIsFlipping(false);
     if (!keepScore) setScore(0);
     setGameStatus('idle');
   }, []);
@@ -66,6 +69,7 @@ export function useGameState() {
     cards,
     score,
     gameStatus,
+    isFlipping,
     levelScore,
     initializeCards,
     handleCardClick,

@@ -10,6 +10,7 @@ import { usePokemons, usePrefetchPokemons } from '@/hooks/usePokemons';
 import { useGameState } from '@/hooks/useGameState';
 import { useHighScore } from '@/hooks/useHighScore';
 import { useLevelManagement } from '@/hooks/useLevelManagement';
+import { useBackgroundMusic } from '@/hooks/sound/useBackgroundMusic';
 import { LEVELS } from '@/lib/levels';
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
     cards,
     score,
     gameStatus,
+    isFlipping,
     levelScore,
     initializeCards,
     handleCardClick,
@@ -35,6 +37,8 @@ export default function App() {
   } = useGameState();
 
   const highScore = useHighScore(score);
+
+  useBackgroundMusic();
 
   const { data: pokemons } = usePokemons(levelConfig?.count ?? 0, {
     enabled: !!currentLevel,
@@ -94,7 +98,11 @@ export default function App() {
         {showLevelSelect && <LevelSelectModal onSelect={handleLevelSelect} />}
         {!showLevelSelect && (
           <>
-            <Gameboard cards={cards} onCardClick={handleCardClick} />
+            <Gameboard
+              cards={cards}
+              onCardClick={handleCardClick}
+              isFlipping={isFlipping}
+            />
             {gameStatus === 'gameover' && (
               <GameOverModal onRestart={handleRestart} onQuit={handleQuit} />
             )}

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import clsx from 'clsx';
 
 import { PrimaryBtn, SecondaryBtn } from '../Buttons/Buttons';
@@ -15,7 +17,7 @@ export default function WinModal({ onKeepPlaying, onQuit, level }) {
           'bg-white-muted/15 rounded-lg ring-1 ring-blue-gray shadow-lg backdrop-blur-xs'
         )}
       >
-        <h1>You Won!</h1>
+        <h2>You Won!</h2>
         <p>
           {level === 'HARD'
             ? 'You mastered the hardest level! Keep playing to challenge yourself further.'
@@ -29,3 +31,9 @@ export default function WinModal({ onKeepPlaying, onQuit, level }) {
     </div>
   );
 }
+
+WinModal.propTypes = {
+  onKeepPlaying: PropTypes.func.isRequired,
+  onQuit: PropTypes.func.isRequired,
+  level: PropTypes.string.isRequired,
+};
