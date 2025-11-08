@@ -2,7 +2,7 @@
 
 ---
 
-_Gotta remember 'em all... [Play the game  → ](https://charlscabangon.github.io/memory-game/)_
+_Gotta remember 'em all... [Play the game  → ](https://charlscabangon.github.io/catch-em-once/)_
 
 ---
 
