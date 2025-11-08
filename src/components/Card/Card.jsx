@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
@@ -55,22 +56,16 @@ export default function Card({ card, onClick, isFlipping }) {
                 'rounded-sm ring-1 ring-blue-gray',
                 'drop-shadow-2xl shadow-lg shadow-prussian-blue-muted/45',
                 'bg-gradient-to-b from-[rgba(148,173,199,0.3)] to-[rgba(117,153,198,0.2)]',
-                'transition-transform duration-200',
-                'focus:outline-none focus-visible:outline focus-visible:outline-2',
-                'focus-visible:outline-blue-gray focus-visible:outline-offset-2',
-                'active:scale-95 disabled:cursor-not-allowed'
+                'transition-transform duration-200 active:scale-95 disabled:cursor-not-allowed'
               )}
-              aria-label={`${capitalizeText(card.name)} card${
-                card.isClicked ? ' (already clicked)' : ''
-              }`}
             >
               <img
                 src={card.image}
                 alt={card.name}
-                className="w-24 h-24 object-contain mb-4 select-none pointer-events-none"
+                className="w-24 h-24 object-contain mb-7 select-none pointer-events-none"
                 draggable="false"
               />
-              <p className="text-base font-medium text-white text-center leading-tight max-w-full truncate px-2">
+              <p className="text-base font-normal text-white text-center leading-tight max-w-full truncate px-2">
                 {capitalizeText(card.name)}
               </p>
             </button>
@@ -96,3 +91,13 @@ export default function Card({ card, onClick, isFlipping }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }),
+  onclick: PropTypes.func.isRequired,
+  isFlipping: PropTypes.bool,
+};
