@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+
 import Card from '../Card/Card';
 
 export default function Gameboard({ cards, onCardClick, isFlipping }) {
@@ -21,3 +23,9 @@ export default function Gameboard({ cards, onCardClick, isFlipping }) {
     </motion.div>
   );
 }
+
+Gameboard.propTypes = {
+  cards: PropTypes.array.isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  isFlipping: PropTypes.bool,
+};

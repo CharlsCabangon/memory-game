@@ -1,12 +1,17 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
+
 import { shuffle } from '@/utils/shuffle';
 import { FLIP_TIME } from '@/lib/constants';
+
+import { useSoundEffects } from './sound/useSoundEffects';
 
 export function useGameState() {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [gameStatus, setGameStatus] = useState('idle');
   const [isFlipping, setIsFlipping] = useState(false);
+
+  const { playCardClick, playBump } = useSoundEffects();
 
   const levelScore = useMemo(
     () => cards.filter((c) => c.isClicked).length,
@@ -24,9 +29,12 @@ export function useGameState() {
       if (gameStatus !== 'playing' || isFlipping) return;
 
       if (card.isClicked) {
+        playBump();
         setGameStatus('gameover');
         return;
       }
+
+      playCardClick();
 
       setIsFlipping(true);
 

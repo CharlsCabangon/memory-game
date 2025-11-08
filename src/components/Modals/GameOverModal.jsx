@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import clsx from 'clsx';
 
 import { PrimaryBtn } from '../Buttons/Buttons';
@@ -15,9 +17,13 @@ export default function GameOverModal({ onQuit }) {
           'bg-white-muted/15 rounded-lg ring-1 ring-blue-gray shadow-lg backdrop-blur-xs'
         )}
       >
-        <h1>Game Over</h1>
+        <h2>Game Over</h2>
         <PrimaryBtn name="Quit" onClick={onQuit} />
       </dialog>
     </div>
   );
 }
+
+GameOverModal.propTypes = {
+  onQuit: PropTypes.func.isRequired,
+};

@@ -10,6 +10,7 @@ import { usePokemons, usePrefetchPokemons } from '@/hooks/usePokemons';
 import { useGameState } from '@/hooks/useGameState';
 import { useHighScore } from '@/hooks/useHighScore';
 import { useLevelManagement } from '@/hooks/useLevelManagement';
+import { useBackgroundMusic } from '@/hooks/sound/useBackgroundMusic';
 import { LEVELS } from '@/lib/levels';
 
 export default function App() {
@@ -36,6 +37,8 @@ export default function App() {
   } = useGameState();
 
   const highScore = useHighScore(score);
+
+  useBackgroundMusic();
 
   const { data: pokemons } = usePokemons(levelConfig?.count ?? 0, {
     enabled: !!currentLevel,

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import clsx from 'clsx';
 import { PrimaryBtn } from '../Buttons/Buttons';
 import { LEVELS } from '@/lib/levels';
@@ -15,7 +17,7 @@ export default function LevelSelectModal({ onSelect }) {
           'bg-white-muted/15 rounded-lg ring-1 ring-blue-gray shadow-lg backdrop-blur-xs'
         )}
       >
-        <h1 className="text-white text-center">Choose Difficulty</h1>
+        <h2 className="text-white text-center">Choose Difficulty</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -25,7 +27,13 @@ export default function LevelSelectModal({ onSelect }) {
         >
           {Object.entries(LEVELS).map(([key, val]) => (
             <label key={key} className="text-white text-center flex gap-4 mb-2">
-              <input type="radio" name="level" value={key} required />
+              <input
+                type="radio"
+                name="level"
+                value={key}
+                className="accent-vivid-yellow"
+                required
+              />
               {val.level}
             </label>
           ))}
@@ -37,3 +45,7 @@ export default function LevelSelectModal({ onSelect }) {
     </div>
   );
 }
+
+LevelSelectModal.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+};
