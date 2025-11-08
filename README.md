@@ -12,11 +12,7 @@ A memory game that's deceptively SIMPLE: don't click the same Pokémon twice. Ca
 
 ## Demo
 
-<video width="600" controls>
-  <source src="src/assets/doc/catch-em-once-doc.mp4" type="video/mp4">
-  Your browser does not support the video tag.  
-  [Click here to watch the demo](src/assets/doc/catch-em-once-doc.mp4)
-</video>
+https://github.com/user-attachments/assets/c77a4c2e-2f71-4b17-be03-26ffb2a1a107
 
 ---
 
